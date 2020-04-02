@@ -32,28 +32,28 @@ if __name__ == '__main__':
     print("start_time: " + str(time.strftime("%I:%M:%S %p", time.localtime())))
 
     geolocators = [
-        GeoLocator(geocoder_name="Nominatim"),
-        GeoLocator(geocoder_name="Photon"),
-        GeoLocator(geocoder_name="ArcGIS",
-                   geocode_args={"out_fields": "*"},
-                   choose_location_func=arcgis_handler.choose_location),
+        # GeoLocator(geocoder_name="Nominatim"),
+        # GeoLocator(geocoder_name="Photon"),
+        # GeoLocator(geocoder_name="ArcGIS",
+        #            geocode_args={"out_fields": "*"},
+        #            choose_location_func=arcgis_handler.choose_location),
         # # TODO - SET subscription_key FOR "azure" SERVICE (can be generated from azure map service)
         GeoLocator(geocoder_name="azurefuzzy",
-                   settings={"subscription_key": "subscription_key"},
+                   settings={"subscription_key": "YkXx4mKTp9sldPyL_xeAZIAmvbi9ZsT1TJnT1zQopnQ"},
                    geocode_args={'typeahead': True},
                    choose_location_func=azure_handler.choose_location,
                    get_classifications_func=azure_handler.get_classifications),
         # # TODO - SET api_key FOR "Bing" SERVICE (can be generated from Bing map service)
-        GeoLocator(geocoder_name="Bing",
-                   settings={"api_key": "api_key"}),
-        # # TODO - SET username FOR "geonames" SERVICE (can be generated from geonames service)
-        GeoLocator(geocoder_name="geonames",
-                   settings={"username": "username"})
+        # GeoLocator(geocoder_name="Bing",
+        #            settings={"api_key": "Aivwx7buZEuTGt8t0ZlCI4YB7zHFTWmbqC6qLXqIQ1flPU7KJoslecVu9hj1O2i3"}),
+        # # # TODO - SET username FOR "geonames" SERVICE (can be generated from geonames service)
+        # GeoLocator(geocoder_name="geonames",
+        #            settings={"username": "temp_use1234555"})
     ]
 
     # CSV
     # TODO - Set the file path to read from
-    # exposure_locations_original_csv = 'file path'
+    # exposure_locations_original_csv = './output_wanted_result_example/Corona_exposure_locations.csv'
     # output_csv_base = './output_wanted_result_example/test_result_arcgis{}.csv'
     # service_output_csv = output_csv_base.format("")
     # service_output_close_csv = output_csv_base.format("_close")
@@ -62,10 +62,10 @@ if __name__ == '__main__':
 
     # Excel
     # TODO - Set the file path to read from
-    exposure_locations_original_excel = 'file path'
-    output_csv_base = './big_data/test_result_azure{}.csv'
+    exposure_locations_original_excel = './big_data/EPI_CoronaExposure_XRM_NEW_31_3_1807_TableToExcel.xlsx'
+    output_csv_base = './big_data/test_result_azure_2_try{}.csv'
     service_output_csv = output_csv_base.format("")
-    service_output_close_csv = output_csv_base.format("_try_try_close")
+    service_output_close_csv = output_csv_base.format("_close")
     location_col_name = 'place'
     wanted_result = pd.read_excel(exposure_locations_original_excel)
 
