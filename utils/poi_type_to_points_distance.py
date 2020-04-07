@@ -110,7 +110,7 @@
 
 
 def get_max_distance_for_classification(classification):
-    if classification in type_to_point_distances:
+    if classification.upper() in type_to_point_distances:
         distance = type_to_point_distances[classification.upper()]
         if distance is not None:
             return distance
@@ -118,16 +118,16 @@ def get_max_distance_for_classification(classification):
 
 
 def get_default_distance():
-    return type_to_point_distances["default"]
+    return type_to_point_distances["default".upper()]
 
 
-type_to_point_distances = {
+type_to_point_distances_temp = {
     "default": 70,
     "PUBLIC_TRANSPORT_STOP": 50,
     "RAILWAY_STATION": 250,
     "HOTEL_MOTEL": 150,
     "IMPORTANT_TOURIST_ATTRACTION": 500, # if want more need to gry the extent
-    "SCHOOL": 700,
+    "SCHOOL": 760,
     "RESTAURANT": 550,
     "PLACE_OF_WORSHIP": 370,
     "MUSEUM": 150,
@@ -149,7 +149,7 @@ type_to_point_distances = {
     "SPORTS_CENTER": 90,
     "PHARMACY": 90,
     "RENT_A_CAR_FACILITY": None,
-    "CINEMA": 140 , # consider maybe 700
+    "CINEMA": 210 , # consider maybe 700
     "DOCTOR": None,
     "THEATER": None,
     "AUTOMOTIVE_DEALER": 350,
@@ -172,10 +172,90 @@ type_to_point_distances = {
     "COURTHOUSE": None, # It's very formal and accurate, but can help to find somthing else near by
     "TRANSPORT_AUTHORITY_VEHICLE_REGISTRATION": None,
     "ZOOS_ARBORETA_BOTANICAL_GARDEN": 150,
-    "AIRPORT": 2000,
+    "AIRPORT": 2400,
     "POLICE_STATION": None,
     "ENTERTAINMENT": None,
     "BEACH": 350,
     "LEISURE_CENTER": None,
-    "TOURIST_INFORMATION_OFFICE": None
+    "TOURIST_INFORMATION_OFFICE": None,
+
+#     arcgis
+    "ATM": None,
+    "Auto Dealership": None,
+    "Auto Maintenance": 350,
+    "Bakery": None,
+    "Bar or Pub": 200,  # Consider this
+    "BBQ and Southern Food": None,
+    "Burgers": None,
+    "Bus Station": 220,
+    "Business Facility": 90,
+    "Campground": None,
+    "Cemetery": 400,
+    "Childrens Apparel": None,
+    "Church": 120,
+    "City Hall": 140,
+    "Civic Center": 200,
+    "Clothing Store": None,
+    "Coffee Shop": 150,
+    "College": 120,  # maybe 400 or 1500 (but with filtering on the address)
+    "Consumer Electronics Store": 180,
+    "Convenience Store": None,
+    "Convention Center": 150,
+    "Court House": None,
+    "Dentist": None,
+    "Department Store": None,
+    "Doctor": None,
+    "Embassy": None,
+    "Fast Food": None,
+    "Fitness Center": None,
+    "Food and Beverage Shop": 160,
+    "French Food": None,
+    "Furniture Store": 250,
+    "Fusion Food": 150,
+    "Gas Station": None,
+    "Government Office": None,  # Check the results for that classification
+    "Grill": None,
+    "Grocery": 190,
+    "Historical Monument": 150,
+    "Home Improvement Store": None,
+    "Hospital": 500,
+    "Hotel": 120,  # Maybe 500
+    "Ice Cream Shop": None,
+    "Industrial Zone": None,
+    "International Food": 100,
+    "Italian Food": 180,
+    "Japanese Food": None,
+    "Kosher Food": None,
+    "Library": None,
+    "Medical Clinic": 700,
+    "Middle Eastern Food": None,
+    "Mosque": None,
+    "Museum": 400,
+    "Nature Reserve": 700,
+    "Office Supplies Store": None,
+    "Other Travel": 100,
+    "Park": 200,
+    "Parking": 110,
+    "Pastries": None,
+    "Performing Arts": 200,
+    "Pizza": None,
+    "Police Station": None,
+    "Post Office": None,
+    "Rental Cars": 700,
+    "Ruin": 1200,
+    "Sandwich Shop": 180,
+    "Sea": None,
+    "Seafood": None,
+    "Shopping Center": 250,
+    "Southeast Asian Food": None,
+    "Specialty Store": 600,  # Maybe 200
+    "Sporting Goods Store": None,
+    "Sports Center": 200,
+    "Sushi": None,
+    "Synagogue": 200,
+    "Tourist Attraction": 400,
+    "Train Station": 200,
+    "Winery": None
 }
+
+type_to_point_distances = {k.upper(): v for k, v in type_to_point_distances_temp.items()}

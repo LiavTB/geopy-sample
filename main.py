@@ -11,7 +11,8 @@ if __name__ == '__main__':
         GeoLocator(geocoder_name="Photon"),
         GeoLocator(geocoder_name="ArcGIS",
                    geocode_args={"out_fields": "*"},
-                   filter_rate_locations_func=arcgis_handler.filter_and_rate),
+                   filter_rate_locations_func=arcgis_handler.filter_and_rate,
+                   get_classifications_func = arcgis_handler.get_classifications),
         # # TODO - SET subscription_key FOR "azure" SERVICE (can be generated from azure map service)
         GeoLocator(geocoder_name="azurefuzzy",
                    settings={"subscription_key": ""},
@@ -50,7 +51,6 @@ if __name__ == '__main__':
     pandas_to_csv_logic.run(df, geolocators, location_col_name, org_x_suffix, org_y_suffix, service_output_csv)
 
     print()
-
 
 
     print("done")

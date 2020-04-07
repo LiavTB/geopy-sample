@@ -17,3 +17,11 @@ def filter_and_rate(locations, original_address):
             # result = max(location_score, key=lambda loc_scr: loc_scr[1])
             return locations_score
     return []
+
+
+def get_classifications(location):
+    classifications = []
+    if 'attributes' in location.raw and 'Addr_type' in location.raw['attributes']:
+        if location.raw['attributes']['Addr_type'] == 'POI':
+            classifications.append(location.raw['attributes']['Type'])
+    return classifications
